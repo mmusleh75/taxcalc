@@ -21,10 +21,8 @@ def SingleTaxCalculator(gSalary):
         Tax = (SingleBraket1 * 3.1) / 100
         Tax = Tax + (gSalary * 5.25) / 100
     else:
-        gSalary = gSalary - SingleBraket1 - SingleBraket2
-        Tax = (SingleBraket1 * 3.1) / 100
-        Tax = Tax + (SingleBraket2 * 5.25) / 100
-        Tax = Tax + (gSalary * 5.7) / 100
+        # TODO
+        Tax = 0
 
     return Tax, OriginalSalary - Tax
 
@@ -40,10 +38,8 @@ def MarriedJointlyTaxCalculator(gSalary):
         Tax = (MarriedJointlyBraket1 * 3.1) / 100
         Tax = Tax + (gSalary * 5.25) / 100
     else:
-        gSalary = gSalary - MarriedJointlyBraket1 - MarriedJointlyBraket2
-        Tax = (MarriedJointlyBraket1 * 3.1) / 100
-        Tax = Tax + (MarriedJointlyBraket2 * 5.25) / 100
-        Tax = Tax + (gSalary * 5.7) / 100
+        # TODO
+        Tax = 0
 
     return Tax, OriginalSalary - Tax
 
@@ -68,6 +64,8 @@ if __name__ == '__main__':
 
     print("------------------------------------")
 
+    # Assignment is to complete the TODO's
+    # TODO
     # Write code to cover "Married Separately" and "Head of Household"
 
 
