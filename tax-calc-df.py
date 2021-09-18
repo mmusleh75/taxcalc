@@ -57,9 +57,6 @@ def CalculateTax(gFile):
 
     # breaking people file into 4 groups based on the filing status
     singleTax_df = people_df[(people_df.FilingStatus == "Single")]
-    marriedJointlyTax_df = people_df[(people_df.FilingStatus == "Married Jointly")]
-    marriedSeparatelyTax_df = people_df[(people_df.FilingStatus == "Married Separately")]
-    headHouseholdTax_df = people_df[(people_df.FilingStatus == "Head of Household")]
 
     # Calculating Single tax
     for index, row in singleTax_df.iterrows():
@@ -72,34 +69,10 @@ def CalculateTax(gFile):
         print(Name, ",", FilingStatus, ",", Salary, ",", Tax[0], ",", Tax[1])
 
     # Calculating Married Jointly tax
-    for index, row in marriedJointlyTax_df.iterrows():
-        Name = row['Name']
-        FilingStatus = row['FilingStatus']
-        Salary = row['Salary']
-
-        Tax = MarriedJointlyTaxCalculator(Salary)
-
-        print(Name, ",", FilingStatus, ",", Salary, ",", Tax[0], ",", Tax[1])
 
     # Calculating Married Separately tax
-    for index, row in marriedSeparatelyTax_df.iterrows():
-        Name = row['Name']
-        FilingStatus = row['FilingStatus']
-        Salary = row['Salary']
-
-        Tax = MarriedSeparatelyTaxCalculator(Salary)
-
-        print(Name, ",", FilingStatus, ",", Salary, ",", Tax[0], ",", Tax[1])
 
     # Calculating Head of Household tax
-    for index, row in headHouseholdTax_df.iterrows():
-        Name = row['Name']
-        FilingStatus = row['FilingStatus']
-        Salary = row['Salary']
-
-        Tax = HeadOfHouseholdTaxCalculator(Salary)
-
-        print(Name, ",", FilingStatus, ",", Salary, ",", Tax[0], ",", Tax[1])
 
 if __name__ == '__main__':
 
