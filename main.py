@@ -3,25 +3,25 @@
 #import pandas as pd
 # import datatable as dt
 
-SingleBraket1 = 15000
-SingleBraket2 = 30000
+SingleBracket1 = 15000
+SingleBracket2 = 30000
 
-MarriedJointlyBraket1 = 30000
-MarriedJointlyBraket2 = 60000
+MarriedJointlyBracket1 = 30000
+MarriedJointlyBracket2 = 60000
 
 def SingleTaxCalculator(gSalary):
 
     Tax = 0
     OriginalSalary = gSalary
 
-    if gSalary <= SingleBraket1:
+    if gSalary <= SingleBracket1:
         Tax = (gSalary * 3.1) / 100
-    elif (gSalary > SingleBraket1) & (gSalary <= SingleBraket2):
-        gSalary = gSalary - SingleBraket1
-        Tax = (SingleBraket1 * 3.1) / 100
+    elif (gSalary > SingleBracket1) & (gSalary <= SingleBracket2):
+        gSalary = gSalary - SingleBracket1
+        Tax = (SingleBracket1 * 3.1) / 100
         Tax = Tax + (gSalary * 5.25) / 100
     else:
-        # TODO
+        # TODO 1
         Tax = 0
 
     return Tax, OriginalSalary - Tax
@@ -31,79 +31,44 @@ def MarriedJointlyTaxCalculator(gSalary):
     Tax = 0
     OriginalSalary = gSalary
 
-    if gSalary <= MarriedJointlyBraket1:
+    if gSalary <= MarriedJointlyBracket1:
         Tax = (gSalary * 3.1) / 100
-    elif (gSalary > MarriedJointlyBraket1) & (gSalary <= MarriedJointlyBraket2):
-        gSalary = gSalary - MarriedJointlyBraket1
-        Tax = (MarriedJointlyBraket1 * 3.1) / 100
+    elif (gSalary > MarriedJointlyBracket1) & (gSalary <= MarriedJointlyBracket2):
+        gSalary = gSalary - MarriedJointlyBracket1
+        Tax = (MarriedJointlyBracket1 * 3.1) / 100
         Tax = Tax + (gSalary * 5.25) / 100
     else:
-        # TODO
+        # TODO 2
         Tax = 0
 
     return Tax, OriginalSalary - Tax
 
+def MarriedSeparatelyTaxCalculator(gSalary):
+    # TODO 3
+    return 0, 0
+
+def HeadOfHouseholdTaxCalculator(gSalary):
+    # TODO 4
+    return 0, 0
+
 if __name__ == '__main__':
 
-    gName = "Steve Doe"
-    gSalary = 100000
+    vName = "Steve Doe"
+    vSalary = 100000
 
-    SingleTax = SingleTaxCalculator(gSalary)
+    Tax = SingleTaxCalculator(vSalary)
+    # Tax[0] is the tax to be paid
+    # Tax[1] is the take home
+    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
 
-    # SingleTax[0] is the tax to be paid
-    # SingleTax[1] is the take home
-    print(gName, ",", gSalary, ",", SingleTax[0], ",", SingleTax[1])
-
-    print("------------------------------------")
-
-    MarriedJointlyTax = MarriedJointlyTaxCalculator(gSalary)
-
-    # MarriedJointlyTax[0] is the tax to be paid
-    # MarriedJointlyTax[1] is the take home
-    print(gName, ",", gSalary, ",", MarriedJointlyTax[0], ",", MarriedJointlyTax[1])
-
-    print("------------------------------------")
+    Tax = MarriedJointlyTaxCalculator(vSalary)
+    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
 
     # Assignment is to complete the TODO's
-    # TODO
-    # Write code to cover "Married Separately" and "Head of Household"
+    # 1. Complete the code for Single and Married Jointly for the 3rd tax braket
+    # 2. Update code for these two functions
+    Tax = MarriedSeparatelyTaxCalculator(vSalary)
+    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
 
-
-
-
-
-'''
-    taxRate_df = pd.DataFrame(pd.read_csv("taxrate.csv"))
-
-    taxRate_df = taxRate_df[taxRate_df.FilingStatus == gFilingStatus]
-    taxRate_df = taxRate_df.sort_values(by=['FilingStatus', 'Low'])
-
-    taxRateToApply_df = taxRate_df[(taxRate_df.FilingStatus == gFilingStatus) & (taxRate_df.Low <= gSalary) & (taxRate_df.High >= gSalary)]
-
-    #print(taxRateToApply_df)
-    taxBraketHigh = taxRateToApply_df['High'].values[0]
-    taxBraketTaxRate = taxRateToApply_df['TaxRate'].values[0]
-    # print(taxBraketHigh)
-    # print(taxBraketTaxRate)
-    # print("--------------------------")
-
-    # exit(1)
-    taxToPay = 0
-    for index, row in taxRate_df.iterrows():
-        FilingStatus = row['FilingStatus']
-        Low = row['Low']
-        High = row['High']
-        TaxRate = row['TaxRate']
-
-        if High <= taxBraketHigh:
-
-            taxableSalary = gSalary - High
-
-            taxToPay = taxToPay + (TaxRate * High) / 100
-
-
-            print(gName, taxableSalary," = " ,FilingStatus, Low, High, TaxRate, " = ", taxToPay)
-
-            #gSalary = gSalary - High
-
-'''
+    Tax = HeadOfHouseholdTaxCalculator(vSalary)
+    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
