@@ -59,16 +59,16 @@ if __name__ == '__main__':
     Tax = SingleTaxCalculator(vSalary)
     # Tax[0] is the tax to be paid
     # Tax[1] is the take home
-    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
+    print(vName, ", Single ,", vSalary, ",", Tax[0], ",", Tax[1])
 
     Tax = MarriedJointlyTaxCalculator(vSalary)
-    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
+    print(vName, ", Married Jointly ,", vSalary, ",", Tax[0], ",", Tax[1])
 
     # Assignment is to complete the TODO's
     # 1. Complete the code for Single and Married Jointly for the 3rd tax braket
     # 2. Update code for these two functions
     Tax = MarriedSeparatelyTaxCalculator(vSalary)
-    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
+    print(vName, ", Married Separately ,", vSalary, ",", Tax[0], ",", Tax[1])
 
     Tax = HeadOfHouseholdTaxCalculator(vSalary)
-    print(vName, ",", vSalary, ",", Tax[0], ",", Tax[1])
+    print(vName, ", Head Of Household ,", vSalary, ",", Tax[0], ",", Tax[1])
